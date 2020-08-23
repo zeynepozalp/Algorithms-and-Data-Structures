@@ -1,0 +1,12 @@
+//Input: [9,6,4,2,3,5,7,0,1]
+//Output: 8
+
+int missingNumber(vector<int>& nums) {
+        int len = nums.size();
+        int sum=0;
+        for(int i=0; i<len; i++){
+            sum+=nums[i];
+        }
+        int realSum= (len) * (len+1) / 2;
+        return realSum-sum;
+    }

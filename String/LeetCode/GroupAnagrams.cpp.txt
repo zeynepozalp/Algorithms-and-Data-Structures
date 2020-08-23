@@ -1,0 +1,23 @@
+//Given an array of strings, group anagrams together.
+//Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+//Output:[["ate","eat","tea"], ["nat","tan"], ["bat"]]
+
+vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        int l=strs.size();
+        vector<vector<string>> res;
+        unordered_map<string, int> seen; 
+        int index=0;
+        for(int i=0; i<l; i++){
+            string s=strs[i];
+            sort(s.begin(), s.end());
+            if(seen.find(s)!=seen.end()){
+                res[seen[s]].push_back(strs[i]);
+            }
+            else{
+                vector<string> vec{strs[i]};
+                res.push_back(vec);
+                seen[s]=index++;
+            }
+        }
+        return res;
+    }

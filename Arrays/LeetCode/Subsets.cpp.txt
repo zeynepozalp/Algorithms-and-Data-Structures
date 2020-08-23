@@ -1,0 +1,14 @@
+vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        ans.push_back(vector<int>());
+        for(int num : nums){
+            vector<vector<int>> newAns(ans);
+            for(vector<int> set : ans){
+                vector<int> newSet(set);
+                newSet.push_back(num);
+                newAns.push_back(newSet);
+            }
+            ans=newAns;
+        }
+        return ans;
+    }

@@ -1,0 +1,28 @@
+string isValid(string s) {
+    sort(s.begin(), s.end());
+    int delFlag=0;
+    int c1=0, c2=0, i=0;
+    int len=s.length();
+    while(i!=len-1 && s[i]==s[i+1]){
+        c1++; i++;
+    }
+    c1++;
+    for(i=0; i<len; i++){
+        if(i!=len-1 && s[i+1]==s[i]) {
+            c2++;
+        }
+        else{
+            c2++;
+            if(c1!=c2){
+                if(!delFlag){
+                    delFlag++;
+                }
+                else{
+                    return "NO";
+                }
+            }
+            c2=0;
+        }
+    }
+    return "YES";
+}

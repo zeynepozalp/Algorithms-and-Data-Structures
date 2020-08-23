@@ -1,0 +1,22 @@
+//This is not my solution: https://medium.com/@xiaogegexiao/increasing-triplet-subsequence-problem-995471b338f1
+
+bool increasingTriplet(vector<int>& nums) {
+        int len=nums.size();
+        if(len<4) return false;
+        
+        int first=INT_MAX;
+        int second=INT_MAX;
+        
+        for(int num : nums){
+            if(num<first){
+                first=num;
+            }
+            if(num>first){
+                second=min(num, second);
+            }
+            if(num>second){
+                return true;
+            }
+        }
+        return false;
+    }

@@ -1,0 +1,22 @@
+// Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
+//Input: mom
+//Output: 1 ([m,m], [mo,om])
+
+//This code does not work but you get the idea. Please let me know if you can correct my code :)
+
+int sherlockAndAnagrams(string s) {
+    int count=0;
+    int l=s.length();
+    unordered_set<string> seen;
+    for(int i=1; i<l; i++){
+        for(int j=0; j<l-i; j++){
+            seen.insert(s.substr(j, i));
+        }
+        for(int j=l-i-1; j>=0; j--){
+            string news=s.substr(j, i);
+            reverse(news.begin(), news.end());
+            if(seen.find(news)!=seen.end()) count++;
+        }
+    }
+    return count;
+}

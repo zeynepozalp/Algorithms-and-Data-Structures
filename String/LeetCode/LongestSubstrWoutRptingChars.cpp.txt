@@ -1,0 +1,18 @@
+int lengthOfLongestSubstring(string s) {
+        int l=s.length();
+        if(l==0) return 0;
+        if(l==1) return 1;
+        int ans=0;
+        for(int i=0; i<l; i++){
+            unordered_set<char> seen;
+            int j;
+            for(j=i; j<l; j++){
+                if(seen.find(s[j])==seen.end()){
+                    seen.insert(s[j]);
+                }
+                else break;
+            }
+            ans=max(ans, j-i);
+        }
+        return ans;
+    }

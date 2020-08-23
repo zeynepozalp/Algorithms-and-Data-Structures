@@ -1,0 +1,13 @@
+long repeatedString(string s, long n) {
+    int len = s.size();
+    int c1=0, c2=0;
+    long times = n/len;
+    long mod = n%len;
+    for(int i=0; i<len; i++){
+        if(s[i]=='a'){
+            c1++;
+            if(i<mod) c2++;
+        }
+    }
+    return times*c1+c2;
+}

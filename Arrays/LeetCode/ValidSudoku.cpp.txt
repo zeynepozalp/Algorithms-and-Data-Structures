@@ -1,0 +1,37 @@
+//This is not my solution.
+
+bool isValidSudoku(vector<vector<char>>& board) {
+        int i, j;
+        for(i=0; i<9; i++){
+            unordered_set<char> seenRow;
+            unordered_set<char> seenCol;
+            unordered_set<char> seenGrid;
+            
+            for(j=0; j<9; j++){
+                if(board[i][j]!='.' && seenRow.find(board[i][j])!=seenRow.end()){
+                    return false;
+                }
+                else{
+                    seenRow.insert(board[i][j]);
+                }
+                
+                if(board[j][i]!='.' && seenCol.find(board[j][i])!=seenCol.end()){
+                    return false;
+                }
+                else{
+                    seenCol.insert(board[j][i]);
+                }
+                
+                int rowindex=3*(i/3);
+                int colindex=3*(i%3);
+                
+                if(board[rowindex+j/3][colindex+j%3]!='.' && seenGrid.find(board[rowindex+j/3][colindex+j%3])!=seenGrid.end()){
+                    return false;
+                }
+                else{
+                    seenGrid.insert(board[rowindex+j/3][colindex+j%3]);
+                }
+            }
+        }
+        return true;
+    }

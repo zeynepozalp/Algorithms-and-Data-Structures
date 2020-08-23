@@ -1,0 +1,6 @@
+vector<int> rotLeft(vector<int> a, int d) {
+    int len = a.size();
+    vector<int> res(a.begin()+d, a.end());
+    res.insert(res.end(), a.begin(), a.begin()+d);
+    return res;
+}

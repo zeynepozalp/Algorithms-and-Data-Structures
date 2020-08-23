@@ -1,0 +1,14 @@
+//Since one char is also a substring, finding that char works.
+
+string twoStrings(string s1, string s2) {
+    int l1=s1.length(), l2=s2.length();
+    int i1, i2;
+    unordered_set<char> seen;
+    for(i1=0; i1<l1; i1++){
+        seen.insert(s1[i1]);
+    }
+    for(i2=0; i2<l2; i2++){
+        if(seen.find(s2[i2])!=seen.end()) return "YES";
+    }
+    return "NO";
+}

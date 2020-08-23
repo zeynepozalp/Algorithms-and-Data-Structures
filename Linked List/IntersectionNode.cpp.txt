@@ -1,0 +1,25 @@
+//Pseudo code for O(n+m) time, O(1) space solution:
+//1.reverse two lists
+//2.while the the next of head nodes are equal go next
+//3.when the next nodes are not equal, return current node
+
+//O(n+m) time, O(n) space
+int lengthOfLongestSubstring(string s) {
+        int l=s.length();
+        if(l==0) return 0;
+        if(l==1) return 1;
+        unordered_set<char> seen;
+        int c=0;
+        int start=l/2-1;
+        int end=l/2;
+        while(start>=0 && end<l){
+            if(seen.find(s[start])!=seen.end() && seen.find(s[end])!=seen.end()) break;
+            if(end<l && seen.find(s[end])==seen.end()){
+                seen.insert(s[end]); c++; end++;
+            }
+            if(start>=0 && seen.find(s[start])==seen.end()){
+                seen.insert(s[start]); c++; start--;
+            }
+        }
+        return c;
+    }
